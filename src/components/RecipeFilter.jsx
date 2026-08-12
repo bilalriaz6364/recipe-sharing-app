@@ -1,4 +1,4 @@
-import { Search, Utensils, X, Flame } from 'lucide-react';
+import { Search, X, Flame } from 'lucide-react';
 
 const CATEGORIES = ['All', 'Breakfast', 'Lunch', 'Dinner', 'Dessert', 'Snacks', 'Vegetarian', 'Quick & Easy'];
 
