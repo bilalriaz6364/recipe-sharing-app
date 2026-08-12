@@ -209,19 +209,19 @@ export default function RecipeDetail() {
     <div className="w-full max-w-4xl mx-auto px-4 py-4 sm:py-8 space-y-8 pb-16">
       
       {/* 1. Navigation & Action Bar */}
-      <div className="flex items-center justify-between gap-3">
+      <div className="flex flex-wrap items-center justify-between gap-2.5 sm:gap-3">
         <Link 
           to="/" 
-          className="inline-flex items-center gap-2 px-4 py-2 bg-slate-900/80 hover:bg-slate-800 text-slate-300 rounded-2xl text-xs font-bold border border-slate-800 transition active:scale-95 shadow-md"
+          className="inline-flex items-center gap-1.5 px-3 py-1.5 sm:px-4 sm:py-2 bg-slate-900/80 hover:bg-slate-800 text-slate-300 rounded-2xl text-xs font-bold border border-slate-800 transition active:scale-95 shadow-md"
         >
-          <ArrowLeft className="w-4 h-4 text-emerald-400" /> Back to Recipes
+          <ArrowLeft className="w-4 h-4 text-emerald-400" /> Back
         </Link>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap">
           {isOwner && (
             <Link
               to={`/edit-recipe/${recipe.id}`}
-              className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-slate-900 hover:bg-slate-800 text-emerald-400 border border-emerald-500/40 rounded-2xl text-xs font-bold active:scale-95 transition"
+              className="inline-flex items-center gap-1 px-3 py-1.5 sm:px-3.5 sm:py-2 bg-slate-900 hover:bg-slate-800 text-emerald-400 border border-emerald-500/40 rounded-2xl text-xs font-bold active:scale-95 transition"
             >
               <Pencil className="w-3.5 h-3.5" /> Edit
             </Link>
@@ -229,7 +229,7 @@ export default function RecipeDetail() {
 
           <button
             onClick={toggleFavorite}
-            className={`inline-flex items-center gap-1.5 px-3.5 py-2 rounded-2xl text-xs font-bold transition border active:scale-95 ${
+            className={`inline-flex items-center gap-1 px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-2xl text-xs font-bold transition border active:scale-95 ${
               isFavorite
                 ? 'bg-amber-500/20 text-amber-400 border-amber-500/40 shadow-lg shadow-amber-500/10'
                 : 'bg-slate-900 text-slate-300 border-slate-800 hover:border-slate-700'
@@ -251,7 +251,7 @@ export default function RecipeDetail() {
       </div>
 
       {/* 2. Precious Hero Image Section */}
-      <div className="relative w-full h-72 sm:h-96 rounded-3xl overflow-hidden glass-panel border border-slate-800/80 shadow-2xl group">
+      <div className="relative w-full h-56 sm:h-96 rounded-2xl sm:rounded-3xl overflow-hidden glass-panel border border-slate-800/80 shadow-2xl group">
         {recipe.image_url ? (
           <img
             src={recipe.image_url}
@@ -260,86 +260,86 @@ export default function RecipeDetail() {
           />
         ) : (
           <div className="w-full h-full flex flex-col items-center justify-center text-slate-600 bg-slate-950">
-            <Utensils className="w-16 h-16 stroke-1 text-slate-500 mb-2" />
-            <span className="text-sm font-semibold text-slate-500">No Image Available</span>
+            <Utensils className="w-12 h-12 sm:w-16 sm:h-16 stroke-1 text-slate-500 mb-2" />
+            <span className="text-xs sm:text-sm font-semibold text-slate-500">No Image Available</span>
           </div>
         )}
 
         <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent" />
 
-        <div className="absolute top-4 left-4 flex gap-2">
-          <span className="bg-gradient-to-r from-emerald-500 to-amber-400 text-slate-950 font-black text-xs px-3.5 py-1.5 rounded-full shadow-lg">
+        <div className="absolute top-3 left-3 sm:top-4 sm:left-4 flex gap-2 flex-wrap">
+          <span className="bg-gradient-to-r from-emerald-500 to-amber-400 text-slate-950 font-black text-[10px] sm:text-xs px-3 py-1 rounded-full shadow-lg">
             {recipe.category || 'General'}
           </span>
           {avgRating && (
-            <span className="bg-slate-950/90 backdrop-blur-md text-amber-400 border border-amber-500/30 font-extrabold text-xs px-3.5 py-1.5 rounded-full flex items-center gap-1.5 shadow-lg">
-              <Star className="w-3.5 h-3.5 fill-amber-400" /> {avgRating} ({reviews.length} reviews)
+            <span className="bg-slate-950/90 backdrop-blur-md text-amber-400 border border-amber-500/30 font-extrabold text-[10px] sm:text-xs px-3 py-1 rounded-full flex items-center gap-1 shadow-lg">
+              <Star className="w-3.5 h-3.5 fill-amber-400" /> {avgRating} ({reviews.length})
             </span>
           )}
         </div>
       </div>
 
       {/* 3. Recipe Title & Quick Stats */}
-      <div className="space-y-4">
-        <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight">
+      <div className="space-y-3 sm:space-y-4">
+        <h1 className="text-2xl sm:text-4xl md:text-5xl font-black text-white tracking-tight leading-tight">
           {recipe.title}
         </h1>
-        <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
+        <p className="text-slate-300 text-xs sm:text-base leading-relaxed">
           {recipe.description || 'A delicious home-cooked recipe prepared with authentic easy ingredients.'}
         </p>
 
         {/* Quick Stats Grid */}
-        <div className="grid grid-cols-3 gap-3 pt-2">
-          <div className="glass-panel p-4 rounded-2xl border border-slate-800 text-center flex flex-col items-center justify-center">
-            <Clock className="w-5 h-5 text-emerald-400 mb-1" />
-            <span className="text-[11px] text-slate-400 uppercase tracking-wider font-bold">Prep Time</span>
-            <span className="text-base font-extrabold text-white mt-0.5">{recipe.prep_time_minutes || 0}m</span>
+        <div className="grid grid-cols-3 gap-2 sm:gap-3 pt-2">
+          <div className="glass-panel p-2.5 sm:p-4 rounded-2xl border border-slate-800 text-center flex flex-col items-center justify-center">
+            <Clock className="w-4 h-4 sm:w-5 sm:h-5 text-emerald-400 mb-1" />
+            <span className="text-[9px] sm:text-[11px] text-slate-400 uppercase tracking-wider font-bold">Prep Time</span>
+            <span className="text-xs sm:text-base font-extrabold text-white mt-0.5">{recipe.prep_time_minutes || 0}m</span>
           </div>
-          <div className="glass-panel p-4 rounded-2xl border border-slate-800 text-center flex flex-col items-center justify-center">
-            <Utensils className="w-5 h-5 text-amber-400 mb-1" />
-            <span className="text-[11px] text-slate-400 uppercase tracking-wider font-bold">Cook Time</span>
-            <span className="text-base font-extrabold text-white mt-0.5">{recipe.cook_time_minutes || 0}m</span>
+          <div className="glass-panel p-2.5 sm:p-4 rounded-2xl border border-slate-800 text-center flex flex-col items-center justify-center">
+            <Utensils className="w-4 h-4 sm:w-5 sm:h-5 text-amber-400 mb-1" />
+            <span className="text-[9px] sm:text-[11px] text-slate-400 uppercase tracking-wider font-bold">Cook Time</span>
+            <span className="text-xs sm:text-base font-extrabold text-white mt-0.5">{recipe.cook_time_minutes || 0}m</span>
           </div>
-          <div className="glass-panel p-4 rounded-2xl border border-slate-800 text-center flex flex-col items-center justify-center">
-            <Users className="w-5 h-5 text-emerald-400 mb-1" />
-            <span className="text-[11px] text-slate-400 uppercase tracking-wider font-bold">Servings</span>
-            <span className="text-base font-extrabold text-white mt-0.5">{recipe.servings || 1}</span>
+          <div className="glass-panel p-2.5 sm:p-4 rounded-2xl border border-slate-800 text-center flex flex-col items-center justify-center">
+            <Users className="w-4 h-4 sm:w-5 sm:h-5 text-emerald-400 mb-1" />
+            <span className="text-[9px] sm:text-[11px] text-slate-400 uppercase tracking-wider font-bold">Servings</span>
+            <span className="text-xs sm:text-base font-extrabold text-white mt-0.5">{recipe.servings || 1}</span>
           </div>
         </div>
       </div>
 
       {/* 4. Ingredients Section */}
-      <div className="glass-panel p-6 rounded-3xl border border-slate-800 space-y-4 shadow-xl">
-        <div className="flex items-center justify-between border-b border-slate-800 pb-4">
-          <h2 className="text-xl font-black text-white flex items-center gap-2">
+      <div className="glass-panel p-4 sm:p-6 rounded-2xl sm:rounded-3xl border border-slate-800 space-y-4 shadow-xl">
+        <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+          <h2 className="text-lg sm:text-xl font-black text-white flex items-center gap-2">
             <span>Ingredients</span> 🥗
           </h2>
-          <span className="text-xs font-bold text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20">
-            {ingredients.length} items needed
+          <span className="text-[10px] sm:text-xs font-bold text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-full border border-emerald-500/20">
+            {ingredients.length} items
           </span>
         </div>
 
         {ingredients.length === 0 ? (
           <p className="text-slate-400 text-xs italic py-2">No ingredients listed yet.</p>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
             {ingredients.map((ing) => {
               const isChecked = checkedIngredients[ing.id];
               return (
                 <button
                   key={ing.id} 
                   onClick={() => toggleIngredientCheck(ing.id)}
-                  className={`flex justify-between items-center p-3.5 rounded-2xl border text-sm text-left transition duration-200 ${
+                  className={`flex justify-between items-center p-3 rounded-2xl border text-xs sm:text-sm text-left transition duration-200 gap-2 ${
                     isChecked
                       ? 'bg-emerald-950/20 border-emerald-500/40 text-slate-400 line-through'
                       : 'bg-slate-900/80 border-slate-800/80 hover:border-slate-700 text-slate-200'
                   }`}
                 >
-                  <div className="flex items-center gap-2.5 pr-2">
+                  <div className="flex items-center gap-2 min-w-0 flex-1">
                     <CheckCircle2 className={`w-4 h-4 shrink-0 ${isChecked ? 'text-emerald-400' : 'text-slate-600'}`} />
-                    <span className="font-semibold">{ing.item_name}</span>
+                    <span className="font-semibold truncate">{ing.item_name}</span>
                   </div>
-                  <span className="font-bold text-amber-400 bg-slate-950 px-3 py-1 rounded-xl border border-slate-800 text-xs whitespace-nowrap">
+                  <span className="font-bold text-amber-400 bg-slate-950 px-2.5 py-0.5 rounded-xl border border-slate-800 text-[11px] sm:text-xs shrink-0 whitespace-nowrap">
                     {ing.quantity} {ing.unit}
                   </span>
                 </button>

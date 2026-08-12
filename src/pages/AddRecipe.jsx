@@ -168,8 +168,8 @@ export default function AddRecipe({ session }) {
 
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Section 1: Basic Details */}
-        <div className="glass-panel p-6 rounded-3xl border border-slate-800 space-y-4 shadow-xl">
-          <h2 className="text-lg font-extrabold text-white flex items-center gap-2 border-b border-slate-800 pb-3">
+        <div className="glass-panel p-4 sm:p-6 rounded-2xl sm:rounded-3xl border border-slate-800 space-y-4 shadow-xl">
+          <h2 className="text-base sm:text-lg font-extrabold text-white flex items-center gap-2 border-b border-slate-800 pb-3">
             <ChefHat className="w-5 h-5 text-emerald-400" /> Basic Information
           </h2>
 
@@ -181,7 +181,7 @@ export default function AddRecipe({ session }) {
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               placeholder="e.g., Creamy Garlic Butter Pasta"
-              className="w-full px-4 py-2.5 bg-slate-950 border border-slate-800 rounded-xl focus:outline-none focus:border-emerald-500 text-white text-sm"
+              className="w-full px-3.5 py-2.5 bg-slate-950 border border-slate-800 rounded-xl focus:outline-none focus:border-emerald-500 text-white text-xs sm:text-sm"
             />
           </div>
 
@@ -192,17 +192,17 @@ export default function AddRecipe({ session }) {
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               placeholder="Overview of the flavor profile, origin, or serving suggestions..."
-              className="w-full px-4 py-2.5 bg-slate-950 border border-slate-800 rounded-xl focus:outline-none focus:border-emerald-500 text-white text-sm"
+              className="w-full px-3.5 py-2.5 bg-slate-950 border border-slate-800 rounded-xl focus:outline-none focus:border-emerald-500 text-white text-xs sm:text-sm"
             />
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
-            <div>
-              <label className="block text-xs font-bold text-slate-300 mb-1.5">Category</label>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            <div className="col-span-2 sm:col-span-1">
+              <label className="block text-[11px] sm:text-xs font-bold text-slate-300 mb-1">Category</label>
               <select
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
-                className="w-full px-3 py-2.5 bg-slate-950 border border-slate-800 rounded-xl focus:outline-none focus:border-emerald-500 text-white text-xs font-semibold"
+                className="w-full px-2.5 py-2.5 bg-slate-950 border border-slate-800 rounded-xl focus:outline-none focus:border-emerald-500 text-white text-xs font-semibold"
               >
                 {CATEGORIES.map((cat) => (
                   <option key={cat} value={cat}>{cat}</option>
@@ -211,35 +211,35 @@ export default function AddRecipe({ session }) {
             </div>
 
             <div>
-              <label className="block text-xs font-bold text-slate-300 mb-1.5">Prep Time (mins)</label>
+              <label className="block text-[11px] sm:text-xs font-bold text-slate-300 mb-1">Prep (mins)</label>
               <input
                 type="number"
                 min="0"
                 value={prepTime}
                 onChange={(e) => setPrepTime(e.target.value)}
-                className="w-full px-3 py-2.5 bg-slate-950 border border-slate-800 rounded-xl focus:outline-none focus:border-emerald-500 text-white text-xs"
+                className="w-full px-2.5 py-2.5 bg-slate-950 border border-slate-800 rounded-xl focus:outline-none focus:border-emerald-500 text-white text-xs"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-bold text-slate-300 mb-1.5">Cook Time (mins)</label>
+              <label className="block text-[11px] sm:text-xs font-bold text-slate-300 mb-1">Cook (mins)</label>
               <input
                 type="number"
                 min="0"
                 value={cookTime}
                 onChange={(e) => setCookTime(e.target.value)}
-                className="w-full px-3 py-2.5 bg-slate-950 border border-slate-800 rounded-xl focus:outline-none focus:border-emerald-500 text-white text-xs"
+                className="w-full px-2.5 py-2.5 bg-slate-950 border border-slate-800 rounded-xl focus:outline-none focus:border-emerald-500 text-white text-xs"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-bold text-slate-300 mb-1.5">Servings</label>
+              <label className="block text-[11px] sm:text-xs font-bold text-slate-300 mb-1">Servings</label>
               <input
                 type="number"
                 min="1"
                 value={servings}
                 onChange={(e) => setServings(e.target.value)}
-                className="w-full px-3 py-2.5 bg-slate-950 border border-slate-800 rounded-xl focus:outline-none focus:border-emerald-500 text-white text-xs"
+                className="w-full px-2.5 py-2.5 bg-slate-950 border border-slate-800 rounded-xl focus:outline-none focus:border-emerald-500 text-white text-xs"
               />
             </div>
           </div>
@@ -253,9 +253,9 @@ export default function AddRecipe({ session }) {
         </div>
 
         {/* Section 2: Ingredients */}
-        <div className="glass-panel p-6 rounded-3xl border border-slate-800 space-y-4 shadow-xl">
+        <div className="glass-panel p-4 sm:p-6 rounded-2xl sm:rounded-3xl border border-slate-800 space-y-4 shadow-xl">
           <div className="flex justify-between items-center border-b border-slate-800 pb-3">
-            <h2 className="text-lg font-extrabold text-white">Ingredients</h2>
+            <h2 className="text-base sm:text-lg font-extrabold text-white">Ingredients</h2>
             <button
               type="button"
               onClick={handleAddIngredient}
@@ -266,46 +266,51 @@ export default function AddRecipe({ session }) {
           </div>
 
           {ingredients.map((ing, index) => (
-            <div key={index} className="flex gap-2 items-center">
-              <input
-                type="text"
-                placeholder="Item name (e.g., Olive Oil)"
-                value={ing.item_name}
-                onChange={(e) => handleIngredientChange(index, 'item_name', e.target.value)}
-                className="flex-1 px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-white text-xs"
-              />
-              <input
-                type="number"
-                placeholder="Qty"
-                step="any"
-                value={ing.quantity}
-                onChange={(e) => handleIngredientChange(index, 'quantity', e.target.value)}
-                className="w-20 px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-white text-xs"
-              />
-              <input
-                type="text"
-                placeholder="Unit (tbsp, grams)"
-                value={ing.unit}
-                onChange={(e) => handleIngredientChange(index, 'unit', e.target.value)}
-                className="w-24 px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-white text-xs"
-              />
-              {ingredients.length > 1 && (
-                <button
-                  type="button"
-                  onClick={() => handleRemoveIngredient(index)}
-                  className="text-red-400 hover:text-red-300 p-2"
-                >
-                  <Trash2 className="w-4 h-4" />
-                </button>
-              )}
+            <div key={index} className="bg-slate-950/70 p-3 rounded-2xl border border-slate-800/80 space-y-2">
+              <div className="flex items-center gap-2">
+                <input
+                  type="text"
+                  placeholder="Ingredient Name (e.g. Olive Oil)"
+                  value={ing.item_name}
+                  onChange={(e) => handleIngredientChange(index, 'item_name', e.target.value)}
+                  className="flex-1 min-w-0 px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-white text-xs focus:outline-none focus:border-emerald-500"
+                />
+                {ingredients.length > 1 && (
+                  <button
+                    type="button"
+                    onClick={() => handleRemoveIngredient(index)}
+                    className="p-2 text-red-400 hover:text-red-300 hover:bg-red-500/10 rounded-xl transition shrink-0"
+                    title="Delete Ingredient"
+                  >
+                    <Trash2 className="w-4 h-4" />
+                  </button>
+                )}
+              </div>
+              <div className="grid grid-cols-2 gap-2">
+                <input
+                  type="number"
+                  step="any"
+                  placeholder="Qty (e.g. 2)"
+                  value={ing.quantity}
+                  onChange={(e) => handleIngredientChange(index, 'quantity', e.target.value)}
+                  className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-white text-xs focus:outline-none focus:border-emerald-500"
+                />
+                <input
+                  type="text"
+                  placeholder="Unit (e.g. tbsp, grams)"
+                  value={ing.unit}
+                  onChange={(e) => handleIngredientChange(index, 'unit', e.target.value)}
+                  className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-white text-xs focus:outline-none focus:border-emerald-500"
+                />
+              </div>
             </div>
           ))}
         </div>
 
         {/* Section 3: Instructions */}
-        <div className="glass-panel p-6 rounded-3xl border border-slate-800 space-y-4 shadow-xl">
+        <div className="glass-panel p-4 sm:p-6 rounded-2xl sm:rounded-3xl border border-slate-800 space-y-4 shadow-xl">
           <div className="flex justify-between items-center border-b border-slate-800 pb-3">
-            <h2 className="text-lg font-extrabold text-white">Instructions & Steps</h2>
+            <h2 className="text-base sm:text-lg font-extrabold text-white">Instructions & Steps</h2>
             <button
               type="button"
               onClick={handleAddInstruction}
@@ -316,33 +321,34 @@ export default function AddRecipe({ session }) {
           </div>
 
           {instructions.map((inst, index) => (
-            <div key={index} className="flex gap-3 items-start bg-slate-950/60 p-3.5 rounded-2xl border border-slate-800">
-              <span className="font-black text-amber-400 mt-2 text-xs">#{inst.step_number}</span>
-              <div className="flex-1 space-y-2">
-                <textarea
-                  rows="2"
-                  placeholder="Describe step instructions..."
-                  value={inst.description}
-                  onChange={(e) => handleInstructionChange(index, 'description', e.target.value)}
-                  className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-white text-xs"
-                />
-                <input
-                  type="number"
-                  placeholder="Timer in minutes (optional)"
-                  value={inst.timer_minutes}
-                  onChange={(e) => handleInstructionChange(index, 'timer_minutes', e.target.value)}
-                  className="w-48 px-3 py-1.5 bg-slate-950 border border-slate-800 rounded-xl text-xs text-white"
-                />
+            <div key={index} className="bg-slate-950/70 p-3.5 rounded-2xl border border-slate-800/80 space-y-2.5">
+              <div className="flex items-center justify-between">
+                <span className="font-black text-amber-400 text-xs">Step #{inst.step_number}</span>
+                {instructions.length > 1 && (
+                  <button
+                    type="button"
+                    onClick={() => handleRemoveInstruction(index)}
+                    className="flex items-center gap-1 text-xs text-red-400 hover:text-red-300 p-1 rounded-lg hover:bg-red-500/10 transition"
+                  >
+                    <Trash2 className="w-3.5 h-3.5" />
+                    <span className="text-[11px] font-bold">Remove</span>
+                  </button>
+                )}
               </div>
-              {instructions.length > 1 && (
-                <button
-                  type="button"
-                  onClick={() => handleRemoveInstruction(index)}
-                  className="text-red-400 hover:text-red-300 p-2"
-                >
-                  <Trash2 className="w-4 h-4" />
-                </button>
-              )}
+              <textarea
+                rows="2"
+                placeholder="Describe step instructions..."
+                value={inst.description}
+                onChange={(e) => handleInstructionChange(index, 'description', e.target.value)}
+                className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-white text-xs focus:outline-none focus:border-emerald-500"
+              />
+              <input
+                type="number"
+                placeholder="Timer in minutes (optional)"
+                value={inst.timer_minutes}
+                onChange={(e) => handleInstructionChange(index, 'timer_minutes', e.target.value)}
+                className="w-full sm:w-48 px-3 py-1.5 bg-slate-950 border border-slate-800 rounded-xl text-xs text-white focus:outline-none focus:border-emerald-500"
+              />
             </div>
           ))}
         </div>

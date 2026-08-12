@@ -46,13 +46,13 @@ export default function Auth() {
   }
 
   return (
-    <div className="max-w-md mx-auto my-12 p-8 glass-panel rounded-3xl border border-slate-800 shadow-2xl space-y-6 relative overflow-hidden">
+    <div className="max-w-md mx-auto my-6 sm:my-12 p-5 sm:p-8 glass-panel rounded-2xl sm:rounded-3xl border border-slate-800 shadow-2xl space-y-5 sm:space-y-6 relative overflow-hidden">
       <div className="absolute -top-12 -right-12 w-40 h-40 bg-emerald-500/10 blur-[60px] pointer-events-none" />
 
       <div className="text-center space-y-2">
-        <h2 className="text-3xl font-black text-white flex items-center justify-center gap-2">
+        <h2 className="text-2xl sm:text-3xl font-black text-white flex items-center justify-center gap-2">
           {isSignUp ? 'Create Account' : 'Welcome Back'}
-          <Sparkles className="w-5 h-5 text-amber-400" />
+          <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-amber-400" />
         </h2>
         <p className="text-slate-400 text-xs font-medium">
           {isSignUp ? 'Join RecipeCraft gourmet community' : 'Access your saved recipes and favorites'}
